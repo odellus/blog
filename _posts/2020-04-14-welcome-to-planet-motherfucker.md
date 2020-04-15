@@ -1,0 +1,72 @@
+---
+layout: post
+title: Welcome to Planet Motherfucker
+---
+
+I'm not sure why I think it's a good idea to have a public facing journal honestly. I guess I can't get quite the same lick from putting up an article on medium as _hosting the code to my blog on Github pages_ yeah that's right. I was hip and new in 2012. Now it's just common best practice.
+
+Anyway I've been taking the Udacity Nanodegree on Deep Reinforcement Learning and two out of three of the projects have kicked my butt. This last one especially. Train an agent to play tennis. Fuck I wish I knew what to tell you. I'm just not having any luck applying DDPG or TD3PG to this problem. Thinking I should back up and try A2C or PPO. Have to fiddle to get the weights right? Why are we not learning $$\mu$$ and $$\sigma$$ for the actions _from the data/environment_? Then I would have what I needed to compute a Kullbach-Liebler divergence score between steps to update the actors (maybe critics too?) in a continuous state space. Not sure how I could do that now. And it does feel like this is a catastrophic forgetting problem. How does one keep from taking a step that goes towards erasing your previously learned knowledge? Put in a cutoff for a metric that measures how much your knowledge has changed. If it has changed too much, then reject that update. Don't make that step.
+
+_**THAT**_ is going to stabilize the algorithm more than just only updating the weights every $$N$$ steps.
+
+Here's the learning step. It's pretty self-contained as far as the intuition behind what everything means:
+
+{% highlight python %}
+def learn(self, experiences):
+        """Update policy and value parameters given batch of experience tuples.
+        Q_targets = r + gamma * cirtic_target(next_state, actor_state(next)state)
+        where:
+            actor_target(state) -> action
+            critic_target(state, action) -> Q-value
+
+        Params
+        ======
+            experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples
+            gamma (float): discount factor
+        """
+        states, actions, rewards, next_states, dones = experiences
+
+        # Update critic
+        # Get predicted next-state actions and Q-values from target models.
+        self.actor_target.eval()
+        self.critic_target.eval()
+
+        actions_next = self.actor_target(next_states)
+        Q_targets_next = self.critic_target(next_states, actions_next)
+        # Compute Q targets for current states (y_i)
+        Q_targets = rewards + (self.gamma * Q_targets_next * (1 - dones))
+
+        # We didn't want actor_target or critc_target showing up in the graph.
+        self.actor_target.train()
+        self.critic_target.train()
+
+        # Compute critic loss
+        Q_expected = self.critic_local(states, actions)
+
+        critic_loss = F.mse_loss(Q_expected, Q_targets)
+
+
+        # Minimize the loss
+        self.critic_optimizer.zero_grad() # Clear gradient
+        critic_loss.backward()            # Backpropagation
+        torch.nn.utils.clip_grad_norm_(self.critic_local.parameters(), 1)
+        self.critic_optimizer.step()      # Update parameters
+
+        # Update actor
+        actions_pred = self.actor_local(states)
+        actor_loss = -self.critic_local(states, actions_pred).mean()
+        # Minimize the loss
+        self.actor_optimizer.zero_grad() # Clear gradient
+        actor_loss.backward()            # Backpropagation
+        # torch.nn.utils.clip_grad_norm_(self.actor_local.parameters(), 1)
+        self.actor_optimizer.step()      # Update parameters
+
+        # Now we update the target networks
+        self.soft_update(self.critic_local, self.critic_target, self.tau)
+        self.soft_update(self.actor_local, self.actor_target, self.tau)
+
+{% endhighlight %}
+
+The critic network `self.critic_local` tries to learn to estimate $$Q$$ from the current $$(s,a)$$ pair based on the actual current discounted reward, the target critic's opinion on the next state, and the action picked by the target actor.
+
+The actor network `self.actor_local` is just trying to minimize `self.critic_local(state, action_pred).mean()` at every update. Meaning it's a separate but coupled optimization problem compared to learning to estimate $$Q(s,a)$$. So you're jointly trying to guide $$Q(s,a) \rightarrow Q^*(s,a)$$ and $$\pi(s) \rightarrow \pi^*(s)$$ because while the critic network is trying to predict $$Q(s,a)$$ our actor is learning to pick actions to maximize returns based on the output of the critic.
