@@ -5,6 +5,8 @@ title: Welcome to Planet Motherfucker
 
 I'm not sure why I think it's a good idea to have a public facing journal honestly. I guess I can't get quite the same lick from putting up an article on medium as _hosting the code to my blog on Github pages_ yeah that's right. I was hip and new in 2012. Now it's just common best practice.
 
+### *Deep Reinforcment Learning*
+
 Anyway I've been taking the Udacity Nanodegree on Deep Reinforcement Learning and two out of three of the projects have kicked my butt. This last one especially. Train an agent to play tennis. Fuck I wish I knew what to tell you. I'm just not having any luck applying DDPG or TD3PG to this problem. Thinking I should back up and try A2C or PPO. Have to fiddle to get the weights right? Why are we not learning $$\mu$$ and $$\sigma$$ for the actions _from the data/environment_? Then I would have what I needed to compute a Kullbach-Liebler divergence score between steps to update the actors (maybe critics too?) in a continuous state space. Not sure how I could do that now. And it does feel like this is a catastrophic forgetting problem. How does one keep from taking a step that goes towards erasing your previously learned knowledge? Put in a cutoff for a metric that measures how much your knowledge has changed. If it has changed too much, then reject that update. Don't make that step.
 
 _**THAT**_ is going to stabilize the algorithm more than just only updating the weights every $$N$$ steps.
@@ -69,4 +71,32 @@ def learn(self, experiences):
 
 The critic network `self.critic_local` tries to learn to estimate $$Q$$ from the current $$(s,a)$$ pair based on the actual current discounted reward, the target critic's opinion on the next state, and the action picked by the target actor.
 
-The actor network `self.actor_local` is just trying to minimize `self.critic_local(state, action_pred).mean()` at every update. Meaning it's a separate but coupled optimization problem compared to learning to estimate $$Q(s,a)$$. So you're jointly trying to guide $$Q(s,a) \rightarrow Q^*(s,a)$$ and $$\pi(s) \rightarrow \pi^*(s)$$ because while the critic network is trying to predict $$Q(s,a)$$ our actor is learning to pick actions to maximize returns based on the output of the critic.
+The actor network `self.actor_local` is just trying to minimize `self.critic_local(state, action_pred).mean()` at every update. Meaning it's a separate but coupled optimization problem compared to learning to estimate $$Q(s,a)$$. So you're jointly trying to guide $$Q(s,a) \rightarrow Q^*(s,a)$$ and $$\pi(s) \rightarrow \pi^*(s)$$ because while the critic network is trying to predict the return based on our current action and state, the actor is learning to pick actions to maximize returns based on the output of the critic.
+
+Anyway it's great and all that I understand the fucking algorithm up one side and down the other now but I can't get it to work as advertised. I've asked a question on the forum and I'm waiting for a response. I don't really care if I never get the certification (I'm lying I want it) but I've already gotten my money's worth. Figuring out what I was doing wrong and learning to train that pendulum was awesome. So was finally nailing the reacher environment. Without a model though it does sort of feel a bit too much like bitcoin mining for presentable policies tbh. We've really got to incorporate more predictive models into RL if we want to get a heck of lot better sample efficiency. Too poor sample efficiency, and it's a heck of task training a good policy through all the muck. Significant barriers exist between $$\pi(s)$$ and $$\pi^*(s)$$. I mean we really need to start looking more carefully at the _transition model_ $$p(s_{t+1}\|s_t, a_t)$$. Every bit we learn about the environment is going to aid us our goal to find $$\pi^*(s)$$.
+
+
+So it's about time for some _math_.
+
+### The Problem
+$$S_t$$  -  state at time $$t$$  
+$$A_t$$  -  action at time $$t$$  
+$$R_t$$  -  reward at time $$t$$  
+$$\gamma$$  - discount rate (where $$\gamma \in [0,1]$$)  
+$$G_t$$   -  discounted return at time $$t$$ ($$\Sigma^\infty_{k=0} \gamma^k R_{t+k+1}$$)  
+$$\mathbb{S}$$    - set of all nonterminal states  
+$$\mathbb{S}^+$$   -  set of all states including terminal states  
+$$\mathbb{A}$$  - set of all actions  
+$$\mathbb{A}(s)$$ - set of all actions available in state $$s$$  
+$$\mathbb{R}$$ - set of all rewards  
+$$p(s', r\|s, a)$$ - probability of next state $$s'$$ and reward $$r$$, given current state $$s$$ and current action $$a$$  
+
+### The Solution
+$$\pi$$ - policy  
+- _if deterministic_: $$\pi(s) \in \mathbb{A}, $$ $$ \forall s  \in S, $$ and  $$a \in \mathbb{A}(s)$$  
+- _if stochastic_: $$\pi(a\|s) = \mathbb{P}(A_t = a \|S_t = s),$$  $$\forall s \in \mathbb{S},$$ and $$a \in \mathbb{A}(s)$$  
+
+$$v_\pi$$ - state-value function for policy $$\pi$$ ($$v_\pi(s) \doteq \mathbb{E}_\pi[G_t\|S_t = s],$$ $$\forall s \in \mathbb{S}$$)  
+$$q_\pi$$ - action-value function for policy $$\pi$$ ($$q_\pi(s,a) \doteq \mathbb{E}_\pi[G_t\|S_t=s,A_t=a],$$ $$\forall s \in \mathbb{S}$$ and $$a \in \mathbb{A}(s)$$)  
+$$v_*$$ - optimal state-value function ($$v_*(s) \doteq max_\pi v_\pi(s),$$ $$\forall s \in \mathbb{S}$$)  
+$$q_*$$ - optimal action-value function ($$q_*(s,a) \doteq max_\pi q_\pi(s,a),$$ $$\forall s \in \mathbb{S}$$ and $$a \in \mathbb{A}(s)$$)
