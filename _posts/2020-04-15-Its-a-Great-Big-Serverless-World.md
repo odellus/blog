@@ -7,7 +7,7 @@ So I've been thinking about how you democratize serverless and enable hybrid clo
 ---
 
 ### **KUBERNETES**
-![k8s]({% site.baseUrl %}/assets/k8s_logo_200.png)  
+![k8s](/blog/assets/k8s_logo_200.png)  
 
 Enter Kubernetes, which enables scaling to zero so it's got the same effective pricing model and availability as some serverless function, but you're not locked into some vendor. They've got Stateful Sets now so you can run MongoDB or Kafka on Kubernetes now too. It's become a pretty much universal container orchestration tool. `docker-compose` on steroids.
 
@@ -26,7 +26,7 @@ I've got to figure out how to configure DNS, heck how to configure the whole sys
 ---
 
 ### **SERVERLESS + KNATIVE**
-![serverless + knative](/assets/serverless_plus_knative.png)  
+![serverless + knative](/blog/assets/serverless_plus_knative.png)  
 No I never imagined I would give a fucking shit about Kubernetes configurations, but I've come to give a damn about Cloudformation and if I can do that I can quite easily start to care about the backbone of hybrid cloud computing AKA container orchestration on a level beyond what `docker-compose` can provide.
 
 Whoa holy shit I sound boring. Look here's the thing though. People spend super megabucks on cloud computing when their computing resource needs aren't that flexible and their market share is pretty well and guaranteed, so they know what they need and the odds are stacked in their favor they aren't going belly up in the next few weeks.
@@ -51,7 +51,7 @@ This is worth making into a list:
 ---
 
 ### **MICROK8S + KNATIVE + SERVERLESS**
-![microk8s + knative + serverless](/assets/microk8s_knative_serverless.png)
+![microk8s + knative + serverless](/blog/assets/microk8s_knative_serverless.png)
 
 #### `microk8s`
 I want to bring people on board with Kubernetes my adopting MicroK8s as the official K8S distribution of our project. Holy fuck we've got a project here folks. I think I know what it was. I said it earlier.
@@ -155,10 +155,10 @@ if __name__ == "__main__":
 ```
 oh yeah you know we're going to work with `submariner`! This is a hybrid cloud project!
 
-![submariner](/assets/logo-submariner.png)
+![submariner](/blog/assets/logo-submariner.png)
 
 So the idea is to first be able to setup the system for microk8s, install microk8s, configure DNS, configure and install knative, then go ahead and preemptively configure the system for connecting to submariner in the near future after the initial **RUN LOCALLY** part of the walkthrough is done and the person going through the introductory tutorial.
 
 They don't need to know that `salt` and `submariner` are there right at there fingertips ready to duplicate what they've just done as many machines as you want it to and tune them into a wheeling dealing hybrid cloud multicluster until they've got the hello world part of their docker code up and running as knative service locally.
 
-![salt](/assets/saltstack.jpeg)
+![salt](/blog/assets/saltstack.jpeg)
