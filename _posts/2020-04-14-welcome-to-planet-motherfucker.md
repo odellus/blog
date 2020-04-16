@@ -100,3 +100,6 @@ $$v_\pi$$ - state-value function for policy $$\pi$$ ($$v_\pi(s) \doteq \mathbb{E
 $$q_\pi$$ - action-value function for policy $$\pi$$ ($$q_\pi(s,a) \doteq \mathbb{E}_\pi[G_t\|S_t=s,A_t=a],$$ $$\forall s \in \mathbb{S}$$ and $$a \in \mathbb{A}(s)$$)  
 $$v_*$$ - optimal state-value function ($$v_*(s) \doteq max_\pi v_\pi(s),$$ $$\forall s \in \mathbb{S}$$)  
 $$q_*$$ - optimal action-value function ($$q_*(s,a) \doteq max_\pi q_\pi(s,a),$$ $$\forall s \in \mathbb{S}$$ and $$a \in \mathbb{A}(s)$$)
+
+
+aaaand I'll continue that in another post. It doesn't all have to be fun with math. What's important is that I _can_ mass communicate with math through MathJax. I guess that means I'm going to be writing github pages textbooks from now on in my spare time. :joy:
