@@ -19,7 +19,7 @@ NAME         URL                                     LATESTCREATED      LATESTRE
 my-service   http://my-service.default.example.com   my-service-mm7tw                 False   RevisionMissing
 ```
 
-And there isn't a whole lot of info on configuring DNS for microk8s right out of the box. Need to find a general example or twist a microkube example to fit my needs. Anyway this all started with me playing around with `serverless create --template knative-docker --path my-service` and it's been fun. I said I wanted to learn more about hybrid cloud and local serverless options dammit and **MEGA HYPER** `docker-compose` AKA Kubernetes said "_yeah that's me_."
+And there isn't a whole lot of info on configuring DNS for microk8s right out of the box. Need to find a general example or twist a microkube example to fit my needs. Anyway [this all started with](https://serverless.com/framework/docs/providers/knative/guide/quick-start/) me playing around with `serverless create --template knative-docker --path my-service` and it's been fun. I said I wanted to learn more about hybrid cloud and local serverless options dammit and **MEGA HYPER** `docker-compose` AKA Kubernetes said "_yeah that's me_."
 
 I've got to figure out how to configure DNS, heck how to configure the whole system, since I want to get this serverless + knative + microk8s thing going. Already thinking about using MongoDB as a Binary weights server to AI models running in KNative services. I guess that's what Kubeflow is about though :thinking:.
 
@@ -89,7 +89,7 @@ No KNative is _really, really, really_ important to the plan, which is basically
 
 I'm such a techbro hypebeast it's ridiculous. I'm just learning about this technology and I'm like "There's gold in them thar hills!" This is why people fucking hate techbros. Oh well I really do believe in a `microk8s + knative + serverless` stack that's geared towards three things:
 1. `microk8s` installation and configuration management tool.
-2. Beowulf cluster management - So `microk8s` runs everywhere does it? Well let's recruit _everything_ into our cluster then.
+2. Beowulf cluster management - So `microk8s` [runs everywhere](https://microk8s.io/docs/clustering) does it? Well let's recruit _everything_ into our cluster then.
 3. Hybrid cloud computing - Integrate cloud computing resources across many vendors into your system like just other nodes in the distributed cluster.  
 In other words I tried to run `serverless create --knative-docker --my-service` and I can't stop thinking about what it could mean if it works.
 
