@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "show_excerpts:"
   Yet another blog
 
 url: https://odellus.github.io/blog
-baseUrl: /
+baseUrl: /blog
 
 show_excerpts: false # set to true to show excerpts on the homepage
 

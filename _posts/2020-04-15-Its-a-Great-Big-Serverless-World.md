@@ -7,7 +7,7 @@ So I've been thinking about how you democratize serverless and enable hybrid clo
 ---
 
 ### **KUBERNETES**
-![k8s](/assets/k8s_logo_200.png)  
+![k8s]({% site.baseUrl %}/assets/k8s_logo_200.png)  
 
 Enter Kubernetes, which enables scaling to zero so it's got the same effective pricing model and availability as some serverless function, but you're not locked into some vendor. They've got Stateful Sets now so you can run MongoDB or Kafka on Kubernetes now too. It's become a pretty much universal container orchestration tool. `docker-compose` on steroids.
 
