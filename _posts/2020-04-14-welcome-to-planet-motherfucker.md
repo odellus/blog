@@ -79,7 +79,9 @@ The actor network `self.actor_local` is just trying to minimize `self.critic_loc
 
 Anyway it's great and all that I understand the fucking algorithm up one side and down the other now but I can't get it to work as advertised. I've asked a question on the forum and I'm waiting for a response. I don't really care if I never get the certification (I'm lying I want it) but I've already gotten my money's worth. Figuring out what I was doing wrong and learning to train that pendulum was awesome. So was finally nailing the reacher environment.
 
-Without a model though it does sort of feel a bit too much like bitcoin mining for presentable policies tbh. We've really got to incorporate more predictive models into RL if we want to get a heck of lot better sample efficiency. Too poor sample efficiency, and it's a heck of task training a good policy through all the muck. Significant barriers exist between $$\pi(s)$$ and $$\pi^*(s)$$. I mean we really need to start looking more carefully at the _transition model_ $$p(s_{t+1}\|s_t, a_t)$$. Every bit we learn about the environment is going to aid us our goal to find $$\pi^*(s)$$.
+Without a model though it does sort of feel a bit too much like bitcoin mining for presentable policies tbh. We've really got to incorporate more predictive models into RL if we want to get a heck of lot better sample efficiency. Too poor sample efficiency, and it's a heck of task training a good policy through all the muck. Significant barriers exist between $$\pi(s)$$ and $$\pi^*(s)$$.
+
+ I mean we really need to start looking more carefully at the _transition model_ $$p(s_{t+1}\|s_t, a_t)$$. Every bit we learn about the environment is going to aid us our goal to find $$\pi^*(s)$$.
 
 
 So it's about time for some _math_.

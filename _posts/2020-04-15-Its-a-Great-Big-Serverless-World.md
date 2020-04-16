@@ -91,6 +91,7 @@ I'm such a techbro hypebeast it's ridiculous. I'm just learning about this techn
 1. `microk8s` installation and configuration management tool.
 2. Beowulf cluster management - So `microk8s` [runs everywhere](https://microk8s.io/docs/clustering) does it? Well let's recruit _everything_ into our cluster then.
 3. Hybrid cloud computing - Integrate cloud computing resources across many vendors into your system like just other nodes in the distributed cluster.  
+
 In other words I tried to run `serverless create --knative-docker --my-service` and I can't stop thinking about what it could mean if it works.
 
 So it looks like I'm going to try to learn as much as possible about kubernetes configurations and try to come up with some sort of advanced microk8s quick start that will have you ready to `serverless deploy` in no time. What are we going to call our microk8s boot and config management tool? How about `microk8s_`?
