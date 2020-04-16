@@ -39,6 +39,8 @@ That's the key though to making a profitable company in such a crowded space imo
 
 They've got the right idea, but I'm thinking more along the lines of `serverless create --template knative-docker --path my-service`, work on increasing out of the box interop between serverless, knative, gpu, and dns on microk8s, and then our tools comes along and configure settings to deploy a clone of your local system to one of $$N$$ different cloud providers, _**US**_ among them.
 
+![ROCm](/blog/assets/rocm_logo.png)
+
 I want to bring integration of ROCm PyTorch and other DL frameworks running on AMD GPUs to the forefront of hybrid cloud development. I want to make it a new paradigm for backend computing and I want to figure out a way to break ROS2 out into a container orchestrated set of services to make them scalable from $$\infty$$ to zero.
 
 Use the built in computing/networking capabilities of kubernetes to make a workaround to DDS middleware. Same end effect for users, but instead of being built on a single instance of an RTPS DDS implementation, topic sharing were wired into the computing framework.
