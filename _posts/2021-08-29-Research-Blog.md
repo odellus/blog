@@ -5,14 +5,18 @@ title: Research Blog
 
 # Research Blog
 
-I think this blog looks better than medium tbh. Especially since I can shoot off with
+I think this blog looks better than medium tbh. Especially since I can shoot off with  
+
 $$
-\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} 
-$$
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}  \\
+$$  
+
 and 
+
 $$
-\nabla \cdot \vec{J} = - \frac{\partial \rho }{\partial t}
-$$
+\nabla \cdot \vec{J} = - \frac{\partial \rho }{\partial t} \\
+$$  
+ 
 whenever I feel like it. I really do love math. It makes things obvious. I don't necessarily need a million examples of what's being done, just show me the equation. Then a couple dozen to a few hundred examples to really get familiar with the process. :joy:
 
 So I guess the topic of this blog is to make some statements about what I'd like the topic of this blog to be so I can come back a year or more later and see it abandoned and the goals unfulfilled, but I'd really rather not keep doing that.
@@ -119,21 +123,28 @@ There are dense attention probabilities for the every token in the sequence alon
 So how does global attention get included then? Seems like different parts of the document should be relevant to each other even if separated by great lengths in the text. Let's look at the global attention mechanism again from `Longformer` in the huggingface transformers library.
 
 Let's refresh how self-attention works real quick. So we've got a sequence of vectors $x_i$ that are our word embeddings of rank $d = dim_{embedding}$.  
-The way learned self-attention works in the transformer is we have our projections of the inputs:
+The way learned self-attention works in the transformer is we have our projections of the inputs:  
+
+
 $$ 
 q_i = W_q x_i \\
 k_i = W_k x_i \\
 v_i = W_v x_i \\
-$$
+$$  
+
+
 Then we compute the pairwise attention probabilites $w_{ij}$ between $x_i$ and $x_j$ $ \forall (i,j)$ by the following
 $$
 w_{ij}' = q_i^T k_j \\
 w_{ij} = softmax(w_{ij}').
 $$
-We then use these pairwise attention probabilities to generate the output of the transformer $y_i$ with 
+We then use these pairwise attention probabilities to generate the output of the transformer $y_i$ with   
+
+
 $$
 y_i = \sum_j w_{ij} v_j.
-$$
+$$  
+
 
 Okay, so now that we're refreshed on that, we can take a look at the following with fresh eyes.
 ```python
@@ -464,6 +475,8 @@ class LongformerSelfAttention(nn.Module):
         return outputs + (global_attn_probs,) if (is_global_attn and output_attentions) else outputs
 ```
 
-So we return the `outputs` which in this case is `attn_probs` for the whole sequence, and if this is a global attention mechanism, we also append `global_attn_probs` as well.
+They key is that the normal attention mechanism calculates a local windowed attention. When `is_global_attn` is set, it concatenates the global attention with the local windowed attention. Letting it key an eye on key parts of the document (where `global_attention_mask` is nonzero) in addition to the local windowed attention.
 
-I've still got miles to go before I sleep, but I think I'm going to slap a big **DONE** label on this for today. Much better way of going through code than just staring at it for hourse. Mark it up in a markdown document. Rubber duck method my way through it.
+I've still got miles to go before I sleep, but I think I'm going to slap a big **DONE** label on this for today. Much better way of going through code than just staring at it for hourse. Mark it up in a markdown document. Rubber duck method my way through it. 
+
+Next time we'll cover the [`long short transformer`](https://arxiv.org/abs/2107.02192) and its [implementation](https://github.com/lucidrains/long-short-transformer) and compare what we see then with what we've got here.
