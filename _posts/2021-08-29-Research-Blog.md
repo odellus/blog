@@ -138,10 +138,10 @@ Then we compute the pairwise attention probabilites $$w_{ij}$$ between $$x_i$$ a
 
 $$
 w_{ij}' = q_i^T k_j \\
-w_{ij} = softmax(w_{ij}').
+w_{ij} = softmax(w_{ij}'). \\
 $$  
 
-We then use these pairwise attention probabilities to generate the output of the transformer $y_i$ with   
+We then use these pairwise attention probabilities to generate the output of the transformer $$y_i$$ with   
 
 
 $$
