@@ -3,8 +3,6 @@ layout: post
 title: Research Blog
 ---
 
-# Research Blog
-
 I think this blog looks better than medium tbh. Especially since I can shoot off with  
 
 $$
@@ -21,7 +19,7 @@ whenever I feel like it. I really do love math. It makes things obvious. I don't
 
 So I guess the topic of this blog is to make some statements about what I'd like the topic of this blog to be so I can come back a year or more later and see it abandoned and the goals unfulfilled, but I'd really rather not keep doing that.
 
-I've been looking at [the code]() for the [`Longformer`](https://arxiv.org/abs/2004.05150) sparse global + dense sliding local attention attention mechanism.
+I've been looking at [the code](https://github.com/huggingface/transformers/blob/master/src/transformers/models/longformer/modeling_longformer.py) for the [`Longformer`](https://arxiv.org/abs/2004.05150) sparse global + dense sliding local attention attention mechanism.
 
 ## Local attention
 Here's a critical part of the code that shows how the key and query matrices are combined for sliding window local self-attention on a long sequence. The process for the attention probabilities and the value matrices are not disimilar.
