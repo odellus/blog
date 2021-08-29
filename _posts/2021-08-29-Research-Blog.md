@@ -133,11 +133,12 @@ v_i = W_v x_i \\
 $$  
 
 
-Then we compute the pairwise attention probabilites $w_{ij}$ between $x_i$ and $x_j$ $ \forall (i,j)$ by the following
+Then we compute the pairwise attention probabilites $$w_{ij}$$ between $$x_i$$ and $$x_j$$ $$ \forall (i,j)$$ by the following
 $$
 w_{ij}' = q_i^T k_j \\
 w_{ij} = softmax(w_{ij}').
-$$
+$$  
+
 We then use these pairwise attention probabilities to generate the output of the transformer $y_i$ with   
 
 
