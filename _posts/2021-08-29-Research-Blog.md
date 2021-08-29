@@ -122,7 +122,7 @@ There are dense attention probabilities for the every token in the sequence alon
 
 So how does global attention get included then? Seems like different parts of the document should be relevant to each other even if separated by great lengths in the text. Let's look at the global attention mechanism again from `Longformer` in the huggingface transformers library.
 
-Let's refresh how self-attention works real quick. So we've got a sequence of vectors $x_i$ that are our word embeddings of rank $d = dim_{embedding}$.  
+Let's refresh how self-attention works real quick. So we've got a sequence of vectors $$x_i$$ that are our word embeddings of rank $$d = dim_{embedding}$$.  
 The way learned self-attention works in the transformer is we have our projections of the inputs:  
 
 
@@ -133,7 +133,9 @@ v_i = W_v x_i \\
 $$  
 
 
-Then we compute the pairwise attention probabilites $$w_{ij}$$ between $$x_i$$ and $$x_j$$ $$ \forall (i,j)$$ by the following
+Then we compute the pairwise attention probabilites $$w_{ij}$$ between $$x_i$$ and $$x_j$$ $$\forall (i,j)$$ by the following  
+
+
 $$
 w_{ij}' = q_i^T k_j \\
 w_{ij} = softmax(w_{ij}').
