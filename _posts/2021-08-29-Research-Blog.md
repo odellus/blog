@@ -221,7 +221,7 @@ There are a few more methods where you can see this
 so that's how we map between the local and global attention matrices from `is_index_global_attn`, which I believe is a parameter that's experimented with at runtime. Maybe the next blog will cover that in more depth. For now we're just going to dig into Longformer's combined global and local sliding window attention mechanism.
 
 
-Okay now here's how they're doing it on the other side. After `attn_probs` has already been calculated with $w_{ij} = softmax(q_i^T k_j)$, except $k_j$ is a subset of the entire sequence where `is_index_global_attn[i]` is nonzero.
+Okay now here's how they're doing it on the other side. After `attn_probs` has already been calculated with $$w_{ij} = softmax(q_i^T k_j)$$, except $$k_j$$ is a subset of the entire sequence where `is_index_global_attn[i]` is nonzero.
 ```python
 
     def _compute_attn_output_with_global_indices(
