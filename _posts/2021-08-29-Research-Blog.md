@@ -112,7 +112,7 @@ def _sliding_chunks_query_key_matmul(self, query: torch.Tensor, key: torch.Tenso
 
 And that's a good idea of how the dense sliding local attention mechanism works for `Longformer`.  Here's a graphic showing what's it's doing across the sequence.  
 
-![sliding overlapping chunks](../sliding_local_attention.gif).
+![sliding overlapping chunks](/blog/assets/sliding_local_attention.gif).
 
 There are dense attention probabilities for the every token in the sequence along the diagonal of the attention matrix. The sliding window densely attends every token with it's local neighborhood.
 
