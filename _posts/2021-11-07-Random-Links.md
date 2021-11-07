@@ -1,0 +1,31 @@
+---
+layout: post
+title: Random Links
+---
+
+I've been taking lots of walks lately. Haven't been riding the exercise bike or using the rowing machine enough, but I have been walking. Try to acknowledge the positive as well as the negative. Things have been better, but they've been worse too. Work is going well. I'm working with kubeflow on bare metal microk8s and I'm basically the Director of AI at what is rapidly becoming an AI company or I probably wouldn't be fucking around with kubernetes at all, especially with microk8s.
+
+Canonical fucked up their gpu add-on in k8s v1.21 and it still doesn't work for anything less than v1.22. They try to install an outdated nvidia-container-runtime on a system with a more recent nvidia-container-runtime already installed and it breaks things. Imagine that?
+
+Problem is seldon support for k8s v1.22 is stuck at v.12-dev (there's no tag for it yet/hasn't been released). I installed seldon v1.12-dev with microk8s v1.22, but they haven't done the release yet. Probably happen any day now. I started putting batch code we had behind an API into a kubeflow pipeline because there's a better way to run batch processes behind an asynchronous API than the way I cobbled together at first. `docker-compose` is not a production-level solution and my manager was totally down with buying our own hardward to avoid the high, high cost of GPU instances in the cloud.
+
+So that's work. I got back on twitter and I feel like a fool. A braying ass. But I do get a lot of useful information from the site, even if it's a terrible place to index references and I definitely need to get better at long form writing and blogging in general. That's why I'm here and not tweeting it out in a thread.
+
+My primary focus is really on automation in horticulture, but since it's a hardware oriented business and the VCs all want people to build apps because they scale out like nothing because they're literally just code, I work in AI, not in robotics. I worked on computer vision for Huawei and I know a hell of a lot about computer vision as that's pretty much where my interest in AI and robotics intersect, but I've spent more time working on NLP honestly.
+
+Most NLP doesn't really interest me that much, but there are three subfields that do interest me. Well four now because I work in applied long document summarization with a focus on long answer generation and yeah I've come to appreciate it a lot honestly. Being able to structure the summarziation of long documents through curating a dataset with the stylistic and structural considerations we want is a BFD. Right now I'm using it with an app that does speech to text on interviews to generate people's life stories and personalized suggestions for care staff, but the applications go far beyond that. 
+
+I'm thinking of ways to use it as a way of cataloging and compressing, structuring even large collections long documents for information retrieval and question answering. Like a smart pooling operation for downsampling that can be used to reduce the granularity for things like search and contrastive learning. Little things like that don't get much consideration in the quest to hit the top of the leaderboards, but they're critical when building out applications at scale because those extra layers and extra learning and extra reliance on learned latent representations that help algorithms hit the top of the charts often make them impractical for many real world applications.
+
+But the other three areas that primarily interst me in the subject of NLP are
+1. Open domain question answering systems
+2. Automated theorem proving
+3. Neural program synthesis
+
+Luckily for me transformers seem to have sort of taken over the leading efforts in a lot of these areas so I can use that knowledge as a basis for research in all three areas, but especially for automated theorem proving and neural program synthesis there are mechanistic backends, libraries and codes that can be used not only for generating large datasets for the entirely implicitly learned models that generate text, whether it be a theorem or a program, and compile and execute the text that should work in tandem with the transformers. I mean if we're generating junk and we have some system we can feed our output to tell if it's junk or not, seems to me like we should leave that system on and make it a part of not only inference but training as well. Offline learning with static datasets is great and it enables lots of people to use your data, but I'm just of the opinion that such an approach is only going to work so well for so many problems before the integrated systems become more practical and effective than generating mountains of data to train a neural system to model and make predictions off of. For one with graph neural networks and contrastive learning, the inference step can also be an update for your dataset you use for a combination of inductive and transductive learning.
+
+But anyway I really want to bring some of what I'm doing at my work into the work I like to do on my own for research/just because it's cool.
+
+[Progress and Challenges in Long Form Question Answering](https://ai.googleblog.com/2021/03/progress-and-challenges-in-long-form.html) is a good post on the state of the art of the field of question answering. There's a good notebook on using [ELI5](https://yjernite.github.io/lfqa.html) that's a bit older than the blog, but introduces the ELI5 dataset and some of its motivations along with of course being a notebook that walks you through running the code.
+
+There's also a new dataset [HybridQA](https://github.com/wenhuchen/HybridQA) that focuses on Multi-Hop reasoning for question answering. What I'd like to do is bring some of the advances in pretrained decoders that are used for causal language modeling in to generating long form answers through warm starting a MLM, BERT-like pretrained encoder architecture with a GPT style decoder backend. They've already enabled this for GPT2 in huggingface. I just need to work on bringing what they did with cross attention for GPT2 into GPTNeo. This is less trivial than it may sound, as GPTNeo uses a different attention mechanism than GPT2, so a simple copy-paste from the work they've done with GPT2 over to GPTNeo won't suffice.
