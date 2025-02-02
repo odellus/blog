@@ -3,14 +3,20 @@ layout: post
 title: THIS CHANGES EVERYTHING
 ---
 
-So I'm scrolling through my twitter feed (which is actually bluesky I call bsky twitter) and I come across a [post from Nathan Lambert](https://bsky.app/profile/natolambert.bsky.social/post/3lh5jih226k2k) where he's sharing his book that he's writing on RLHF and reasoning fine tuning. And I discover [pandoc](https://pandoc.org/) and I'm like "oh shit I am going to take over the world with this". The book he's writing looks great by the way. I can't wait to read it once it's finished. I started reading it already, otherwise I wouldn't have learned about pandoc. And I was impressed by the webpage and everything enough to be like hey what's the github for this.
+So I'm scrolling through my twitter feed (which is actually bluesky I call bsky twitter) and I come across a [post from Nathan Lambert](https://bsky.app/profile/natolambert.bsky.social/post/3lh5jih226k2k) where he's sharing his book that he's writing on RLHF and reasoning fine tuning. And I discover [pandoc](https://pandoc.org/) and I'm like "oh shit I am going to take over the world with this". The book he's writing looks great by the way. I can't wait to read it once it's finished. I started reading it already, otherwise I wouldn't have learned about pandoc. I was impressed by the webpage and everything enough to be like hey what's the github for this.
 
-# Pandoc
+## Pandoc
 
-Anyway next thing you know I've gone and clone the [pandoc book template repo](https://github.com/wikiti/pandoc-book-template) and I'm like "oh shit I am going to take over the world with this". Which is cool. I've got a lot of things I want to write and markdown is a simple enough format that I can just get it out of my head. Also I write code and I've become very comfortable with markdown as the basic format for all of my documentation.
+Anyway next thing you know I've gone and cloned the [pandoc book template repo](https://github.com/wikiti/pandoc-book-template) and I'm like "oh shit I am going to take over the world with THIS". Which is cool. I've got a lot of things I want to write and markdown is a simple enough format that I can just get it out of my head. Also I write code and I've become very comfortable with markdown as the basic format for all of my documentation.
 
 
-So I'm `make pdf`-ing and `make html`-ing and I get to the epub format and I output and epub and I'm like how the shit do I look at this? Now here's something you have to understand about me. I am an avid reader. I read a lot of fucking books. Like a lot. I've read over 1000 books on kindle since 2014 and probably a 1000 more in 2004-2014 or close to it. I read a lot. So I'm looking for epub readers on linux suggestions and I find [foliate](https://github.com/johnfactotum/foliate), which is totally rad and I have a bunch of trouble installing it because I'm looking at the github page and trying to build from source with meson and it's giving me "wrong version of gjs-1.0" errors and in the process of learning all about how the version of gfs is tied to the version of ubuntu and I really really *really* need to use the flatpak, I discover gjs and builder and now I'm ready to make applications for linux and if people want to run them on windows install flatpak and if they want to run them on mac install flatpak and if they want to run them on linux install flatpak lol. 
+So I'm `make pdf`-ing and `make html`-ing and I get to the epub format, I output an epub, and I'm like how the shit do I look at this?  
+
+Here's something you have to understand about me. I am an avid reader. I read a lot of fucking books. Like a lot. I've read over 1000 books on kindle since 2014 and probably a 1000 more in 2004-2014 or close to it. I read a lot. 
+
+## Foliate
+
+So I'm looking for epub readers on linux suggestions and I find [foliate](https://github.com/johnfactotum/foliate), which is totally rad and I have a bunch of trouble installing it because I'm looking at the github page and trying to build from source with meson and it's giving me "wrong version of gjs-1.0" errors and in the process of learning all about how the version of gfs is tied to the version of ubuntu and I really really *really* need to use the flatpak, I discover gjs and builder and now I'm ready to make applications for linux and if people want to run them on windows install flatpak and if they want to run them on mac install flatpak and if they want to run them on linux install flatpak lol. 
 
 Reason it's so exciting is I can try to find other ways to get epubs than through subscribing to kindle unlimited. The books on there are bad. I want to put together some scripts like storm except for writing books, which I can then feed to pandoc and turn into epubs and read on my laptop or my phone. I think I can find a way to read epubs on my phone besides kindle reader. Anyway I've got an epub reader for linux now and I'm stoked about it. I'm also stoked I can write epubs now too!
 
@@ -31,16 +37,16 @@ So I've been using this intelligent search agent in [you.com](http://you.com) th
 
 Oh my goodness I couldn't be happier finding SearXNG. Took me a minute figuring out how to change the settings.yaml so I could get the json responses that storm was looking for and it took 100 seconds for storm to get the results, but I was able to get it to work. Now I have a local search engine instance running on my laptop that I can access programmatically. I think I'm going to have to say this again because I didn't really understand how big of a deal it is/was/is going to be.
 
-I. Have. A. Local. Search. Engine. I. Can. Programmatically. Access.
-Have.
-A.
-Local.
-Search.
-Engine.
-I.
-Can.
-Programmatically.
-Access.
+| **I** | **Have** | **A** | **Local** | **Search** | **Engine** | **I** | **Can** | **Programmatically** | **Access** |
+| **Have**               | *AM*| | | | | | | | |
+| **A**                  | | *GOING*| | | | | | | |
+| **Local**              | | | *TO*| | | | | | |
+| **Search**            | | | |*TAKE* | | | | | |
+| **Engine**           | | | | |*OVER* | | | | |
+| **I**                  | | | | | |*THE* | | | |
+| **Can**                | | | | | | | *WORLD* | | |
+| **Programmatically**   | | | | | | | | *WITH*| |
+| **Access**             | | | | | | | | | *THIS*|
 
 So I set it up as my default search engine in firefox and now I don't feel like I am contributing to the psychological profile google is building and constantly refining on me like I'm one of those people who work at Area 51 and can't use the internet to find answers to their questions lol. My idea about doing tons of queries to bury what I'm actually interested in is all the more feasible now, especially since I want to use it programmatically for my projects anyway.
 
