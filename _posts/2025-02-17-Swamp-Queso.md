@@ -11,6 +11,7 @@ Okay so I made the most amazing queso the other day and you guys have to know ab
 - 1 large white onion
 - 1 capsicum
 - 1 jalapeno
+- big spoon of minced garlic
 - cumin
 - Tony Chachere seasoning
 - black pepper
