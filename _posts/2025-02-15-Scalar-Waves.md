@@ -16,35 +16,35 @@ $$
 $$
 
 ### Maxwell's Equations
-Gauss' Law for Electricity:
+Gauss' Law for Electricity:  
 $$
 \begin{align}
 \nabla \cdot \textbf{E} &= \frac{\rho}{\epsilon_0}
 \end{align}
 $$
 
-Gauss' Law for Magnetism:
+Gauss' Law for Magnetism:  
 $$
 \begin{align}
 \nabla \cdot \textbf{B} &= 0
 \end{align}
 $$
 
-Faraday's Law of Induction:
+Faraday's Law of Induction:  
 $$
 \begin{align}
 \nabla \times \textbf{E} &= - \frac{\partial \textbf{B}}{\partial t}
 \end{align}
 $$
 
-Ampere's Law with Maxwell's correction:
+Ampere's Law with Maxwell's correction:  
 $$
 \begin{align}
 \nabla \times \textbf{B} &= \mu_0 \textbf{J} + \mu_0 \epsilon_0 \frac{\partial \textbf{E}}{\partial t}
 \end{align}
 $$
 
-Continuity  Equation:
+Continuity Equation:  
 $$
 \begin{align}
 \nabla \cdot \textbf{J} &= - \frac{\partial \rho}{\partial t}
