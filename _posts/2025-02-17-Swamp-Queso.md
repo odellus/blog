@@ -20,7 +20,7 @@ Okay so I make the most amazing queso and you guys have to know about it. Here's
 - 1/2 cups water
   
 ### Acknowledgements
-Adapted from [this recipe for Legendary Casa Ole Queso](https://cookingindex.com/recipes/75606/casa-ole%27s-chili-con-queso.htm). ![flautas con queso](./assets/casa_ole_flautas.jpg)
+Adapted from [this recipe for Legendary Casa Ole Queso](https://cookingindex.com/recipes/75606/casa-ole%27s-chili-con-queso.htm). ![flautas con queso](/blog/assets/casa_ole_flautas.jpg)
 
 ### Instructions
 
